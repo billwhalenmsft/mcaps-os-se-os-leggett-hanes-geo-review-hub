@@ -1,0 +1,92 @@
+{
+  "schema": "CUSTOMER_SITE_MANIFEST/1",
+  "packageVersion": "0.3.0",
+  "generatedOn": "2026-09-16",
+  "customer": {
+    "name": "Leggett & Platt",
+    "tpid": "1062129",
+    "slug": "leggett-platt"
+  },
+  "title": "MCAPS OS | SE OS Progress & Walkthrough — Leggett Hanes GEO Site Quantity Analysis",
+  "purpose": "Provide a customer-facing progress-and-walkthrough review candidate for Leggett & Platt technical and innovation reviewers, with sample/synthetic evidence and explicit non-claims.",
+  "audience": "Leggett & Platt technical and innovation reviewers",
+  "skin": {
+    "id": "studio",
+    "name": "Studio",
+    "registry": "CUSTOMER_HUB_SKIN_REGISTRY/1"
+  },
+  "branding": {
+    "mode": "house-plus-user-supplied-customer-asset",
+    "evidenceTier": "official-site-observed",
+    "exactTpidResolution": true,
+    "observedCandidatesAllowed": false,
+    "bundledCustomerAssets": true,
+    "houseIdentity": {
+      "wordmark": "MCAPS OS | SE OS",
+      "assetPath": "assets/mcaps-se-os-house-mark.svg"
+    },
+    "customerIdentity": {
+      "wordmark": "Leggett & Platt",
+      "assetPath": "assets/leggett-platt-logo.svg",
+      "assetAlt": "Leggett & Platt",
+      "sourceType": "user-supplied-local-asset",
+      "reviewStatus": "approved-for-local-preview",
+      "publicationRights": "review-required"
+    }
+  },
+  "generatedFiles": [
+    "assets/leggett-platt-logo.svg",
+    "assets/mcaps-se-os-house-mark.svg",
+    "index.html",
+    "README.md",
+    "robots.txt",
+    "site-manifest.json",
+    "gate.js",
+    "lightbox.js"
+  ],
+  "referencedAssets": [
+    "assets/leggett-platt-logo.svg",
+    "assets/mcaps-se-os-house-mark.svg",
+    "deterministic-boundaries.html",
+    "downloads/site-quantity-public-safe-fact-sheet.json",
+    "handover.html",
+    "local-preview-notes.html",
+    "resources/screenshots/README.md",
+    "resources/screenshots/quote-review-context.png",
+    "resources/screenshots/sample-analysis-history.png",
+    "resources/screenshots/sample-quantity-review.png",
+    "resources/screenshots/scoring-table-excerpt.png"
+  ],
+  "externalLinks": [
+    "https://learn.microsoft.com/power-apps/developer/model-driven-apps/webpage-html-web-resources"
+  ],
+  "gate": {
+    "type": "password",
+    "mechanism": "gate.js",
+    "configuration": "configured",
+    "expires": null,
+    "softGate": true
+  },
+  "destination": {
+    "state": "local-draft-only",
+    "public": false,
+    "url": null,
+    "repository": null
+  },
+  "externalEffects": {
+    "uploaded": false,
+    "published": false,
+    "registered": false,
+    "shared": false,
+    "messageSent": false
+  },
+  "visualAssets": {
+    "screenshotsCaptured": true,
+    "screenshotType": "approved-sample-synthetic-reviewed-capture-subviews",
+    "placeholderAssetsInUse": false,
+    "placeholderReplacementRequiredBeforePublication": false,
+    "publicationVerified": false,
+    "connectedFlowVerified": false,
+    "note": "Images are valid named subviews from a reviewed capture, not proof of a currently connected flow or a full-height view of the application."
+  }
+}

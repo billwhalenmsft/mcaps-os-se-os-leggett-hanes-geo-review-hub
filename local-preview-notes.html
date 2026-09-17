@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Local Preview Behavior Notes — Site Quantity Analysis</title>
+  <script src="gate.js"></script>
+  <style>
+    :root {
+      --bg: #f5f8fc;
+      --surface: #ffffff;
+      --border: #c6d6e9;
+      --text: #142d4e;
+      --muted: #415873;
+      --accent: #0057b8;
+      --accent-strong: #003b7a;
+      --hero-soft: #eaf3ff;
+    }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.6 "Segoe UI", Aptos, Calibri, sans-serif; }
+    header, main, footer { width: min(920px, calc(100% - 2rem)); margin: 0 auto; }
+    header { padding: 1.8rem 0 0.8rem; }
+    .house-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .house-mark {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--hero-soft);
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+    .house-wording {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .house-wordmark {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      font-size: 1rem;
+    }
+    .house-context {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 650;
+    }
+    h1 { margin: 0.35rem 0 0; line-height: 1.15; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.04em; font-weight: 700; margin: 0; }
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.1rem; margin: 0.9rem 0; }
+    ol { margin: 0.35rem 0 0; padding-left: 1.2rem; }
+    .note { background: var(--hero-soft); border-left: 4px solid var(--accent); padding: 0.8rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="house-brand" href="index.html" aria-label="MCAPS OS | SE OS review hub home">
+      <span class="house-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="22" height="22" role="presentation" focusable="false">
+          <circle cx="32" cy="32" r="7" fill="currentColor"></circle>
+          <ellipse cx="32" cy="32" rx="24" ry="10" fill="none" stroke="currentColor" stroke-width="3"></ellipse>
+          <ellipse cx="32" cy="32" rx="10" ry="24" fill="none" stroke="currentColor" stroke-width="3" transform="rotate(24 32 32)"></ellipse>
+          <ellipse cx="32" cy="32" rx="10" ry="24" fill="none" stroke="currentColor" stroke-width="3" transform="rotate(-24 32 32)"></ellipse>
+        </svg>
+      </span>
+      <span class="house-wording">
+        <span class="house-wordmark">MCAPS OS | SE OS</span>
+        <span class="house-context">Leggett &amp; Platt · Hanes GEO Site Quantity Analysis</span>
+      </span>
+    </a>
+    <p class="eyebrow">Atomic blue/white local fixture mode</p>
+    <h1>Local preview behavior notes</h1>
+  </header>
+  <main>
+    <section class="panel" aria-labelledby="purpose">
+      <h2 id="purpose">Purpose</h2>
+      <p>
+        These notes describe local fixture-mode behavior for package reviewers.
+        They are not a live-tenant acceptance record.
+      </p>
+    </section>
+    <section class="panel" aria-labelledby="manual-export">
+      <h2 id="manual-export">Manual export behavior</h2>
+      <ol>
+        <li>Open the local preview page in the package review environment.</li>
+        <li>Select a fixture source and run analysis in local mode.</li>
+        <li>Select <strong>Manual export</strong> to generate a deterministic JSON file for the current state.</li>
+        <li>Confirm a browser download event and an on-page confirmation message.</li>
+      </ol>
+      <p class="note">
+        Manual export in this package is deterministic local review behavior.
+        It does not represent live customer data extraction.
+      </p>
+    </section>
+    <section class="panel" aria-labelledby="limitations">
+      <h2 id="limitations">Limitations</h2>
+      <ul>
+        <li>No customer source files are embedded in this package.</li>
+        <li>No tenant endpoint URLs or record identifiers are included.</li>
+        <li>Live Dynamics walkthrough remains human-authenticated and separately gated.</li>
+      </ul>
+      <p><a href="index.html">Back to candidate hub</a></p>
+    </section>
+  </main>
+  <footer>
+    <p>Local review notes only. Publication and sharing remain pending explicit approval.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="en" data-skin="studio" data-brand-overlay="skin-only">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>MCAPS OS | SE OS Progress &amp; Walkthrough — Leggett Hanes GEO Site Quantity Analysis</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <script src="gate.js"></script>
+  <script src="lightbox.js" defer></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+      --skin-hero: var(--cp-text);
+      --skin-hero-fg: var(--cp-bg-elevated);
+      --skin-grid-size: 64px;
+      --skin-card-radius: 8px;
+      --skin-section-space: 72px;
+      --skin-max-width: 1180px;
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    html[data-skin="orbital"] {
+      --cp-accent: #a61e4d;
+      --cp-accent-hover: #86183e;
+      --cp-link: #0067b8;
+      --skin-hero: #242424;
+      --skin-hero-fg: #ffffff;
+    }
+    html[data-theme="dark"][data-skin="orbital"] {
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #ffacba;
+      --cp-link: #67b7f7;
+      --skin-hero: #202020;
+      --skin-hero-fg: #ffffff;
+    }
+    html[data-skin="executive"] {
+      --cp-bg: #f4f6f3;
+      --cp-bg-elevated: #ffffff;
+      --cp-accent: #146c43;
+      --cp-accent-hover: #0e5031;
+      --cp-link: #005a9e;
+      --skin-hero: #f2f6f3;
+      --skin-hero-fg: #1f2a23;
+      --skin-section-space: 52px;
+      --skin-max-width: 1040px;
+    }
+    html[data-theme="dark"][data-skin="executive"] {
+      --cp-bg: #252925;
+      --cp-bg-elevated: #202320;
+      --cp-accent: #6fd6a2;
+      --cp-accent-hover: #8be5b6;
+      --cp-link: #67b7f7;
+      --skin-hero: #202622;
+      --skin-hero-fg: #f5f7f5;
+    }
+    html[data-skin="workshop"] {
+      --cp-bg: #f6f4ef;
+      --cp-bg-elevated: #ffffff;
+      --cp-accent: #005a9e;
+      --cp-accent-hover: #004578;
+      --cp-link: #8a3700;
+      --skin-hero: #eaf3f8;
+      --skin-hero-fg: #1f2933;
+      --skin-section-space: 60px;
+    }
+    html[data-theme="dark"][data-skin="workshop"] {
+      --cp-bg: #322f2b;
+      --cp-bg-elevated: #292725;
+      --cp-accent: #67b7f7;
+      --cp-accent-hover: #8ccbfa;
+      --cp-link: #ffb36b;
+      --skin-hero: #1d2830;
+      --skin-hero-fg: #f7fafc;
+    }
+    html[data-skin="blueprint"] {
+      --cp-bg: #f1f6f6;
+      --cp-bg-elevated: #ffffff;
+      --cp-accent: #006b78;
+      --cp-accent-hover: #004f59;
+      --cp-link: #005a9e;
+      --skin-hero: #eaf4f5;
+      --skin-hero-fg: #173238;
+      --skin-card-radius: 4px;
+      --skin-section-space: 56px;
+    }
+    html[data-theme="dark"][data-skin="blueprint"] {
+      --cp-bg: #263234;
+      --cp-bg-elevated: #202a2c;
+      --cp-accent: #62ced6;
+      --cp-accent-hover: #84dce2;
+      --cp-link: #75bfff;
+      --skin-hero: #17282b;
+      --skin-hero-fg: #eff9fa;
+    }
+    html[data-skin="studio"] {
+      --cp-bg: #f6f3f1;
+      --cp-bg-elevated: #ffffff;
+      --cp-accent: #b42318;
+      --cp-accent-hover: #8f1c13;
+      --cp-link: #005a9e;
+      --skin-hero: #262626;
+      --skin-hero-fg: #ffffff;
+      --skin-section-space: 80px;
+    }
+    html[data-theme="dark"][data-skin="studio"] {
+      --cp-bg: #302e2d;
+      --cp-bg-elevated: #272625;
+      --cp-accent: #ff8f85;
+      --cp-accent-hover: #ffada6;
+      --cp-link: #75bfff;
+      --skin-hero: #1d1d1d;
+      --skin-hero-fg: #ffffff;
+    }
+
+    html[data-skin="studio"][data-brand-overlay="skin-only"] {
+      /* RC5 lab canonical tokens reused verbatim from
+         customers/_shared/accelerators/sales-agent-extensibility-pattern/first-party-agent-extension/local-lab/web/styles.css
+         (--white #FFFFFF, --navy #142D4E, --royal #0057B8, --deep #003B7A, --pale #EAF3FF, --line #B9CAE0) */
+      --cp-bg: #ffffff;
+      --cp-bg-elevated: #ffffff;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #eaf3ff;
+      --cp-border: #b9cae0;
+      --cp-border-strong: #0057b8;
+      --cp-text: #142d4e;
+      --cp-text-muted: #415873;
+      --cp-text-soft: #415873;
+      --cp-accent: #0057b8;
+      --cp-accent-hover: #003b7a;
+      --cp-accent-soft: rgba(0, 87, 184, 0.1);
+      --cp-accent-fg: #ffffff;
+      --cp-link: #0057b8;
+      --cp-panel: #ffffff;
+      --cp-panel-strong: #ffffff;
+      --cp-highlight: rgba(0, 87, 184, 0.1);
+      --skin-hero: #ffffff;
+      --skin-hero-fg: #142d4e;
+    }
+    html[data-theme="dark"][data-skin="studio"][data-brand-overlay="skin-only"] {
+      --cp-bg: #15263d;
+      --cp-bg-elevated: #1a2e47;
+      --cp-surface: #1c334f;
+      --cp-surface-soft: #223b59;
+      --cp-border: #385171;
+      --cp-border-strong: #7c97b8;
+      --cp-text: #ffffff;
+      --cp-text-muted: #d7e4f6;
+      --cp-text-soft: #cad9ef;
+      --cp-accent: #7cb4ff;
+      --cp-accent-hover: #9ec7ff;
+      --cp-accent-soft: rgba(124, 180, 255, 0.18);
+      --cp-accent-fg: #142d4e;
+      --cp-link: #9ec7ff;
+      --skin-hero: #003b7a;
+      --skin-hero-fg: #ffffff;
+    }
+
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--cp-bg); }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      letter-spacing: 0;
+    }
+    a { color: var(--cp-link); text-underline-offset: 3px; }
+    a:hover { color: var(--cp-accent-hover); }
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 3px solid var(--cp-link);
+      outline-offset: 3px;
+    }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.12; letter-spacing: 0; }
+    h1 { margin-bottom: 20px; font-size: 56px; font-weight: 760; }
+    h2 { margin-bottom: 12px; font-size: 34px; font-weight: 740; }
+    h3 { margin-bottom: 8px; font-size: 21px; font-weight: 720; }
+    p { margin-bottom: 16px; }
+
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 10000;
+      padding: 10px 14px;
+      transform: translateY(-160%);
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      font-weight: 700;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .wrap { width: min(var(--skin-max-width), calc(100% - 48px)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+    }
+    .header-inner {
+      display: flex;
+      min-height: 64px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: var(--cp-text);
+      text-decoration: none;
+    }
+    .brand-house {
+      display: inline-flex;
+      min-width: 0;
+      align-items: center;
+      gap: 12px;
+    }
+    .house-mark {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+    .house-wording {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .house-wordmark {
+      color: var(--cp-text);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+    .house-context {
+      color: var(--cp-text-muted);
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .brand-customer {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      margin-left: 2px;
+      padding-left: 14px;
+      border-left: 1px solid var(--cp-border);
+    }
+    .brand-customer-logo {
+      width: auto;
+      max-width: 180px;
+      height: 26px;
+      object-fit: contain;
+    }
+    .section-nav { display: flex; gap: 18px; overflow-x: auto; }
+    .section-nav a {
+      padding: 20px 0 17px;
+      border-bottom: 3px solid transparent;
+      color: var(--cp-text-muted);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .section-nav a:hover { border-bottom-color: var(--cp-link); color: var(--cp-link); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--skin-hero);
+      color: var(--skin-hero-fg);
+    }
+    .hero::after {
+      position: absolute;
+      right: -8%;
+      bottom: -30%;
+      width: 48%;
+      height: 100%;
+      border: 1px solid var(--cp-border-strong);
+      content: "";
+      transform: rotate(-12deg);
+      opacity: 0.45;
+    }
+    .hero-inner { position: relative; z-index: 1; padding: 72px 0 64px; }
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--cp-accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .hero h1 { max-width: 900px; color: var(--skin-hero-fg); }
+    .hero-summary { max-width: 760px; margin-bottom: 28px; color: var(--skin-hero-fg); font-size: 20px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .hero-cobrand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: -10px 0 28px;
+      padding: 6px 12px;
+      border: 1px solid var(--cp-border);
+      border-radius: var(--skin-card-radius);
+      background: var(--cp-surface-soft);
+    }
+    .hero-cobrand-label {
+      color: var(--cp-text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+    .hero-cobrand-logo {
+      width: auto;
+      max-width: 210px;
+      height: 28px;
+      object-fit: contain;
+    }
+    .meta-item {
+      padding: 6px 10px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: var(--skin-card-radius);
+      color: var(--skin-hero-fg);
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: var(--skin-card-radius);
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      font-weight: 750;
+      text-decoration: none;
+    }
+    .button-primary { border-color: var(--cp-accent); background: var(--cp-accent); color: var(--cp-accent-fg); }
+    .button-primary:hover { border-color: var(--cp-accent-hover); background: var(--cp-accent-hover); color: var(--cp-accent-fg); }
+
+    .content-band { padding: var(--skin-section-space) 0; border-bottom: 1px solid var(--cp-border); }
+    .content-band:nth-child(even) { background: var(--cp-bg-elevated); }
+    .section-heading { display: grid; grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr); gap: 48px; margin-bottom: 32px; }
+    .section-summary { max-width: 720px; color: var(--cp-text-muted); font-size: 18px; }
+    .resource-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; counter-reset: resource; }
+    .resource-card {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--cp-border);
+      border-radius: var(--skin-card-radius);
+      background: var(--cp-surface);
+      box-shadow: 0 0 2px var(--cp-border), 0 1px 2px var(--cp-border);
+    }
+    .resource-media { aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--cp-border); background: var(--cp-surface-soft); }
+    .resource-media img { width: 100%; height: 100%; object-fit: cover; }
+    button.resource-media {
+      display: block;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-surface-soft);
+      font: inherit;
+      color: inherit;
+      text-align: inherit;
+      cursor: zoom-in;
+    }
+    .resource-caption { margin-top: 10px; color: var(--cp-text-soft); font-size: 13px; font-style: italic; }
+    .resource-body { display: flex; min-height: 230px; flex-direction: column; padding: 22px; }
+    .resource-type { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 18px; }
+    .chip {
+      padding: 4px 8px;
+      border: 1px solid var(--cp-border);
+      border-radius: var(--skin-card-radius);
+      color: var(--cp-text-muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .chip-format { border-color: var(--cp-accent); color: var(--cp-accent); }
+    .resource-description { flex: 1; color: var(--cp-text-muted); }
+    .resource-link { align-self: flex-start; font-weight: 800; }
+    .resource-link::after { content: " >"; }
+
+    html[data-skin="orbital"] .hero { border-bottom: 6px solid var(--cp-link); }
+    html[data-skin="orbital"] .hero .eyebrow,
+    html[data-skin="studio"] .hero .eyebrow { color: var(--skin-hero-fg); }
+    html[data-skin="orbital"] .resource-card { border-top: 4px solid var(--cp-accent); }
+    html[data-skin="executive"] .hero { min-height: 380px; }
+    html[data-skin="executive"] .hero::after { display: none; }
+    html[data-skin="executive"] .hero h1 { max-width: 780px; font-size: 48px; }
+    html[data-skin="executive"] .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    html[data-skin="executive"] .resource-card { border-width: 0 0 0 4px; box-shadow: none; }
+    html[data-skin="executive"] .resource-body { min-height: 210px; }
+    html[data-skin="workshop"] .hero { min-height: 430px; border-bottom: 8px solid var(--cp-warning); }
+    html[data-skin="workshop"] .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    html[data-skin="workshop"] .resource-card { counter-increment: resource; padding-left: 54px; }
+    html[data-skin="workshop"] .resource-card::before {
+      position: absolute;
+      top: 20px;
+      left: 16px;
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      content: counter(resource, decimal-leading-zero);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    html[data-skin="blueprint"] body {
+      background-image:
+        linear-gradient(var(--cp-accent-soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--cp-accent-soft) 1px, transparent 1px);
+      background-size: var(--skin-grid-size) var(--skin-grid-size);
+    }
+    html[data-skin="blueprint"] .hero { min-height: 430px; border-bottom: 1px solid var(--cp-accent); }
+    html[data-skin="blueprint"] .hero::after { right: 4%; bottom: 12%; width: 220px; height: 220px; transform: none; }
+    html[data-skin="blueprint"] .eyebrow,
+    html[data-skin="blueprint"] .chip { font-family: Consolas, "Courier New", Courier, monospace; }
+    html[data-skin="blueprint"] .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    html[data-skin="blueprint"] .resource-card { box-shadow: none; }
+    html[data-skin="studio"] .hero { min-height: 560px; border-bottom: 8px solid var(--cp-accent); }
+    html[data-skin="studio"] .resource-card:has(.resource-media) .resource-body { min-height: 210px; }
+    html[data-skin="studio"] .resource-media { aspect-ratio: 3 / 2; }
+    /* RC5 lab is white throughout (no dark hero band); the skin-only overlay keeps the
+       hero the same white surface as the rest of the page, with a thin light-blue
+       keyline instead of the Studio skin's default 8px accent-filled divider. */
+    html[data-skin="studio"][data-brand-overlay="skin-only"] .hero {
+      min-height: 0;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    html[data-skin="studio"][data-brand-overlay="skin-only"] .hero::after { display: none; }
+    html[data-skin="studio"][data-brand-overlay="skin-only"] .hero .eyebrow { color: var(--cp-accent); }
+
+    .status-card { border-top-width: 4px; border-top-style: solid; }
+    .status-card.status-ready { border-top-color: var(--cp-accent); }
+    .status-card.status-validated { border-top-color: var(--cp-success); }
+    .status-card.status-progress { border-top-color: var(--cp-warning); }
+    /* RC5 lab status-grid cards: pale-blue fill with a left accent border, not a top border. */
+    html[data-brand-overlay="skin-only"] .status-card {
+      border-top: none;
+      border-left-width: 4px;
+      border-left-style: solid;
+      background: var(--cp-surface-soft);
+    }
+    html[data-brand-overlay="skin-only"] .status-card.status-ready { border-left-color: var(--cp-accent); }
+    html[data-brand-overlay="skin-only"] .status-card.status-validated { border-left-color: var(--cp-success); }
+    html[data-brand-overlay="skin-only"] .status-card.status-progress { border-left-color: var(--cp-warning); }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 14px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+    .status-badge::before { width: 8px; height: 8px; border-radius: 50%; background: currentColor; content: ""; }
+    .status-ready .status-badge { color: var(--cp-accent); background: var(--cp-accent-soft); }
+    .status-validated .status-badge { color: var(--cp-success); background: var(--cp-surface-soft); }
+    .status-progress .status-badge { color: var(--cp-warning); background: var(--cp-surface-soft); }
+    .context-note {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      padding: 16px 18px;
+      border: 1px solid var(--cp-border);
+      border-left-width: 4px;
+      border-left-color: var(--cp-accent);
+      border-radius: var(--skin-card-radius);
+      background: var(--cp-surface-soft);
+      color: var(--cp-text);
+      font-size: 15px;
+    }
+    .context-note strong { color: var(--cp-accent); }
+    .step-chip { border-color: var(--cp-accent); color: var(--cp-accent); }
+
+    .lightbox { position: fixed; inset: 0; z-index: 10000; padding: 24px; }
+    .lightbox:not([hidden]) { display: grid; place-items: center; }
+    .lightbox-backdrop { position: absolute; inset: 0; background: var(--cp-overlay); }
+    .lightbox-dialog {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: min(100%, 860px);
+      max-height: 90vh;
+      padding: 20px;
+      border: 1px solid var(--cp-border);
+      border-radius: var(--skin-card-radius);
+      background: var(--cp-surface);
+      box-shadow: var(--cp-shadow);
+    }
+    .lightbox-close {
+      align-self: flex-end;
+      min-height: 44px;
+      min-width: 44px;
+      padding: 6px 12px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: var(--skin-card-radius);
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .lightbox-image { max-width: 100%; max-height: 60vh; object-fit: contain; border-radius: 4px; }
+    .lightbox-caption { margin: 0; color: var(--cp-text-muted); font-size: 14px; }
+    body.lightbox-open { overflow: hidden; }
+    .site-footer { padding: 34px 0 44px; background: var(--cp-bg-elevated); color: var(--cp-text-muted); font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; border-top: 1px solid var(--cp-border); padding-top: 20px; }
+
+    @media (max-width: 900px) {
+      .section-heading { grid-template-columns: 1fr; gap: 10px; }
+      .resource-grid,
+      html[data-skin="executive"] .resource-grid,
+      html[data-skin="workshop"] .resource-grid,
+      html[data-skin="blueprint"] .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 680px) {
+      .wrap { width: min(var(--skin-max-width), calc(100% - 28px)); }
+      .header-inner { min-height: 56px; }
+      .brand-line { gap: 10px; }
+      .brand-customer {
+        margin-left: 0;
+        padding-left: 10px;
+      }
+      .brand-customer-logo {
+        max-width: 126px;
+        height: 20px;
+      }
+      .hero-cobrand {
+        width: fit-content;
+        margin: -4px 0 24px;
+      }
+      .hero-cobrand-logo {
+        max-width: 156px;
+        height: 22px;
+      }
+      .section-nav { display: none; }
+      .hero,
+      html[data-skin="executive"] .hero,
+      html[data-skin="workshop"] .hero,
+      html[data-skin="blueprint"] .hero,
+      html[data-skin="studio"] .hero { min-height: 0; }
+      .hero-inner { padding: 52px 0 44px; }
+      h1,
+      html[data-skin="executive"] .hero h1 { font-size: 40px; }
+      h2 { font-size: 29px; }
+      .hero-summary { font-size: 18px; }
+      .resource-grid,
+      html[data-skin="executive"] .resource-grid,
+      html[data-skin="workshop"] .resource-grid,
+      html[data-skin="blueprint"] .resource-grid { grid-template-columns: 1fr; }
+      html[data-skin="workshop"] .resource-card { padding-left: 46px; }
+      .resource-body { min-height: 0; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+    @media print {
+      .site-header, .hero-actions { display: none; }
+      .hero { min-height: 0; border-bottom-width: 3px; }
+      .hero-inner, .content-band { padding: 28px 0; }
+      .resource-card { break-inside: avoid; box-shadow: none; }
+      .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      a { color: var(--cp-text); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand-line" href="index.html" aria-label="MCAPS OS | SE OS review hub home">
+        <span class="brand-house">
+          <img class="house-mark" src="assets/mcaps-se-os-house-mark.svg" alt="MCAPS OS | SE OS house mark">
+          <span class="house-wording">
+            <span class="house-wordmark">MCAPS OS | SE OS</span>
+            <span class="house-context">Hanes GEO Site Quantity Analysis</span>
+          </span>
+        </span>
+        <span class="brand-customer">
+          <img class="brand-customer-logo" src="assets/leggett-platt-logo.svg" alt="Leggett &amp; Platt">
+        </span>
+      </a>
+      <nav class="section-nav" aria-label="Page sections">
+        <a href="#status">Status</a>
+        <a href="#walkthrough">Walkthrough</a>
+        <a href="#motion-overview">What this covers</a>
+        <a href="#resources">Evidence and references</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hub-title">
+      <div class="wrap hero-inner">
+        <p class="eyebrow">Site Quantity Analysis — sample review experience</p>
+        <h1 id="hub-title">Site Quantity Analysis — Progress &amp; Walkthrough</h1>
+        <p class="hero-summary">See what's ready to review, what's been validated locally, and what's still in progress for the Hanes GEO Site Quantity Analysis motion — with a first look at the native experience using sample data only.</p>
+        <div class="hero-meta" aria-label="Resource center details">
+          <span class="meta-item">Leggett &amp; Platt technical and innovation reviewers</span>
+          <span class="meta-item">Sample/synthetic walkthrough evidence</span>
+          <span class="meta-item">Updated 2026-09-16</span>
+        </div>
+        <div class="hero-cobrand" aria-label="Customer co-brand lockup">
+          <span class="hero-cobrand-label">Customer co-brand</span>
+          <img class="hero-cobrand-logo" src="assets/leggett-platt-logo.svg" alt="Leggett &amp; Platt">
+        </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="handover.html">Open the review brief</a>
+          <a class="button button-secondary" href="#walkthrough">See the walkthrough</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-band" id="status" aria-labelledby="status-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Current state</p>
+            <h2 id="status-title">Where this stands today</h2>
+          </div>
+          <p class="section-summary">Three plain distinctions guide this review: what's ready to look at, what's proven in local testing, and what's still being wired up. None of these represent a completed, connected, or customer-live deployment.</p>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card status-card status-ready">
+            <div class="resource-body">
+              <span class="status-badge">Ready to review</span>
+              <h3>Native Quote view with sample data</h3>
+              <p class="resource-description">Site Quantity Analysis results render inside the native Dynamics 365 Quote view using bounded sample data. This is the primary screen for reviewers today.</p>
+            </div>
+          </article>
+          <article class="resource-card status-card status-validated">
+            <div class="resource-body">
+              <span class="status-badge">Validated locally</span>
+              <h3>Parser and guard behavior</h3>
+              <p class="resource-description">Deterministic parsing and guard-rail logic have been exercised against local fixture inputs and pass the accelerator's local test suite. This confirms behavior in isolation, not inside a live tenant.</p>
+            </div>
+          </article>
+          <article class="resource-card status-card status-progress">
+            <div class="resource-body">
+              <span class="status-badge">In progress</span>
+              <h3>Connected SharePoint and native flow</h3>
+              <p class="resource-description">Wiring the native flow to a live SharePoint document source is underway and not yet deployed. No connected-tenant execution is represented in this package.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-band" id="walkthrough" aria-labelledby="walkthrough-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">First look</p>
+            <h2 id="walkthrough-title">A first look at the experience</h2>
+          </div>
+          <p class="section-summary">Three steps through the reviewer experience, shown with sample/synthetic data only.</p>
+        </div>
+        <div class="context-note" role="note">
+          <strong>About these images.</strong>
+          <span>The screenshots below are sanitized, reviewed capture subviews using sample/synthetic data only. They are valid named subviews from a reviewed capture &mdash; not proof of a currently connected flow, a live tenant, or a full-height view of the application. Select any image to view it enlarged.</span>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card">
+            <button type="button" class="resource-media lightbox-trigger" data-lightbox-src="resources/screenshots/sample-quantity-review.png" data-lightbox-caption="Sample/synthetic quantity review data in the native Quote view. Reviewed capture subview &mdash; not proof of a connected or live tenant flow." aria-haspopup="dialog">
+              <img src="resources/screenshots/sample-quantity-review.png" alt="Sample/synthetic quantity review screenshot showing site quantity rows in the native Quote view. Select to view enlarged.">
+            </button>
+            <div class="resource-body">
+              <div class="resource-type">
+                <span class="chip step-chip">Step 1</span>
+              </div>
+              <h3>Review quantities</h3>
+              <p class="resource-description">Reviewers start in the native Quote view, where site quantities appear alongside standard Dynamics 365 fields using bounded sample/synthetic data only.</p>
+              <p class="resource-caption">Sample/synthetic quantity review data. Reviewed capture subview, not a connected-tenant screenshot.</p>
+            </div>
+          </article>
+          <article class="resource-card">
+            <button type="button" class="resource-media lightbox-trigger" data-lightbox-src="resources/screenshots/scoring-table-excerpt.png" data-lightbox-caption="Scoring table excerpt (sample/synthetic data). Only a subset of the eight scoring dimensions is visible in this excerpt." aria-haspopup="dialog">
+              <img src="resources/screenshots/scoring-table-excerpt.png" alt="Sample/synthetic scoring table excerpt showing a partial view of confidence scoring. Not all eight scoring dimensions are visible in this excerpt. Select to view enlarged.">
+            </button>
+            <div class="resource-body">
+              <div class="resource-type">
+                <span class="chip step-chip">Step 2</span>
+              </div>
+              <h3>Inspect scoring and evidence</h3>
+              <p class="resource-description">Each quantity line links to a confidence score and the evidence references behind it, so reviewers can see why a value was proposed.</p>
+              <p class="resource-caption">Table excerpt &mdash; sample/synthetic data. Not all eight scoring dimensions are visible in this excerpt.</p>
+            </div>
+          </article>
+          <article class="resource-card">
+            <button type="button" class="resource-media lightbox-trigger" data-lightbox-src="resources/screenshots/sample-analysis-history.png" data-lightbox-caption="Sample/synthetic analysis history shown in the review pane, for quantity review context." aria-haspopup="dialog">
+              <img src="resources/screenshots/sample-analysis-history.png" alt="Sample/synthetic analysis history shown in the review pane, illustrating prior quantity review activity for context. Select to view enlarged.">
+            </button>
+            <div class="resource-body">
+              <div class="resource-type">
+                <span class="chip step-chip">Step 3</span>
+              </div>
+              <h3>Open review pane</h3>
+              <p class="resource-description">Selecting a line opens the review pane for a closer look, including quantity review and analysis history context, before any accept or follow-up action.</p>
+              <p class="resource-caption">Sample/synthetic analysis history context. Reviewed capture subview, not a connected or live tenant flow.</p>
+            </div>
+          </article>
+          <article class="resource-card">
+            <button type="button" class="resource-media lightbox-trigger" data-lightbox-src="resources/screenshots/quote-review-context.png" data-lightbox-caption="Supporting context: a reviewed capture subview of the quote review screen (sample/synthetic data), shown for orientation only." aria-haspopup="dialog">
+              <img src="resources/screenshots/quote-review-context.png" alt="Supporting sample/synthetic capture of the broader quote review context around the Site Quantity Analysis walkthrough. Select to view enlarged.">
+            </button>
+            <div class="resource-body">
+              <div class="resource-type">
+                <span class="chip">Supporting context</span>
+              </div>
+              <h3>Quote review context</h3>
+              <p class="resource-description">A wider view of the quote review screen surrounding the walkthrough steps above, shown with sample/synthetic data for orientation only.</p>
+              <p class="resource-caption">Sample/synthetic data. Valid named subview from a reviewed capture, not proof of a currently connected flow or a full-height view of the application.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+        <section class="content-band" id="motion-overview" aria-labelledby="motion-overview-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Motion overview</p>
+            <h2 id="motion-overview-title">What this candidate covers</h2>
+          </div>
+          <p class="section-summary">A public-safe explanation of architecture boundaries, deterministic analysis behavior, and review limits for this motion.</p>
+        </div>
+        <div class="resource-grid">
+        <article class="resource-card">
+          
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">Brief</span>
+              <span class="chip chip-format">HTML</span>
+            </div>
+            <h3>Review brief</h3>
+            <p class="resource-description">Summarizes the business problem, proposed architecture, deterministic analysis behavior, and explicit non-claims.</p>
+            <a class="resource-link" href="handover.html">Open brief</a>
+          </div>
+        </article>
+        <article class="resource-card">
+          
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">Technical note</span>
+              <span class="chip chip-format">HTML</span>
+            </div>
+            <h3>Deterministic boundaries</h3>
+            <p class="resource-description">Documents supported deterministic outputs, governed constraints, and why this package avoids private tenant data.</p>
+            <a class="resource-link" href="deterministic-boundaries.html">Read boundaries</a>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+    <section class="content-band" id="resources" aria-labelledby="resources-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Review assets</p>
+            <h2 id="resources-title">Public-safe evidence and references</h2>
+          </div>
+          <p class="section-summary">Supporting evidence for this walkthrough, including sample-fixture facts, local validation notes, and approved reference material.</p>
+        </div>
+        <div class="resource-grid">
+        <article class="resource-card">
+          
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">Fact sheet</span>
+              <span class="chip chip-format">JSON</span>
+            </div>
+            <h3>Public-safe fact sheet (JSON)</h3>
+            <p class="resource-description">Machine-readable summary of motion scope, deterministic analysis claims, and explicit limitations for technical review.</p>
+            <a class="resource-link" href="downloads/site-quantity-public-safe-fact-sheet.json">Download fact sheet</a>
+          </div>
+        </article>
+        <article class="resource-card">
+          
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">Behavior notes</span>
+              <span class="chip chip-format">HTML</span>
+            </div>
+            <h3>Local preview behavior notes</h3>
+            <p class="resource-description">Explains manual export behavior and review steps using local fixture mode only.</p>
+            <a class="resource-link" href="local-preview-notes.html">Open notes</a>
+          </div>
+        </article>
+        <article class="resource-card">
+          
+          <div class="resource-body">
+            <div class="resource-type">
+              <span class="chip">Official reference</span>
+              <span class="chip chip-format">WEB</span>
+            </div>
+            <h3>Microsoft Learn reference</h3>
+            <p class="resource-description">Official documentation for model-driven app HTML web resources.</p>
+            <a class="resource-link" href="https://learn.microsoft.com/power-apps/developer/model-driven-apps/webpage-html-web-resources">Open Microsoft Learn</a>
+          </div>
+        </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>MCAPS OS | SE OS Review candidate · sample/synthetic data · not a connected production deployment.</span>
+      <span>Studio skin</span>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="walkthrough-lightbox" hidden>
+    <div class="lightbox-backdrop" data-lightbox-dismiss></div>
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+      <button type="button" class="lightbox-close" data-lightbox-dismiss aria-label="Close enlarged image">&times;</button>
+      <img class="lightbox-image" id="lightbox-image" src="resources/screenshots/quote-review-context.png" alt="Enlarged walkthrough screenshot preview.">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "schema": "SITE_QUANTITY_PUBLIC_SAFE_FACT_SHEET/1",
+  "generatedOn": "2026-09-11",
+  "customer": {
+    "name": "Leggett & Platt",
+    "tpid": "1062129"
+  },
+  "motion": {
+    "name": "Hanes GEO Site Quantity Analysis",
+    "intent": "Technical review candidate for a public-safe customer package",
+    "status": "local-draft-only"
+  },
+  "supportedDeterministicClaims": [
+    "Equivalent fixture inputs produce equivalent computed quantity outputs.",
+    "Local manual export payload is deterministic for equivalent state.",
+    "Evidence and scoring display remains bounded to approved schema fields."
+  ],
+  "architectureBoundaries": [
+    "SharePoint-first document reference model; no source binary payload in Dataverse by design for this pattern.",
+    "Fail-closed behavior for unsupported formats and policy exceptions.",
+    "Read-only presentation behavior in the review package."
+  ],
+  "limitationsAndNonClaims": [
+    "No claim of connected parser execution in a live customer tenant.",
+    "No claim that automation flow is enabled.",
+    "No claim that target import conditions are universally clean-ready.",
+    "No claim of completed Dynamics browser acceptance walkthrough."
+  ],
+  "reviewChecklist": [
+    "Confirm package contains only customer-viewable, public-safe content.",
+    "Confirm no customer source docs, personal identifiers, or tenant endpoints are present.",
+    "Confirm deterministic behavior notes align with validated local tests."
+  ]
+}
