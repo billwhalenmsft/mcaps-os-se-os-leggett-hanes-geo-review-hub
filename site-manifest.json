@@ -1,14 +1,14 @@
 {
   "schema": "CUSTOMER_SITE_MANIFEST/1",
-  "packageVersion": "0.3.0",
-  "generatedOn": "2026-09-16",
+  "packageVersion": "0.5.0",
+  "generatedOn": "2026-09-29",
   "customer": {
     "name": "Leggett & Platt",
     "tpid": "1062129",
     "slug": "leggett-platt"
   },
-  "title": "MCAPS OS | SE OS Progress & Walkthrough — Leggett Hanes GEO Site Quantity Analysis",
-  "purpose": "Provide a customer-facing progress-and-walkthrough review candidate for Leggett & Platt technical and innovation reviewers, with sample/synthetic evidence and explicit non-claims.",
+  "title": "MCAPS OS | SE OS Cowork-First Progress & Walkthrough — Leggett Hanes GEO Site Quantity Analysis",
+  "purpose": "Provide a customer-facing Cowork-first progress-and-walkthrough review candidate for Leggett & Platt technical and innovation reviewers, with two complete illustrative UI examples, exact public/synthetic quantities, a locked read-only Dynamics destination pattern, and explicit non-claims.",
   "audience": "Leggett & Platt technical and innovation reviewers",
   "skin": {
     "id": "studio",
@@ -37,6 +37,8 @@
   "generatedFiles": [
     "assets/leggett-platt-logo.svg",
     "assets/mcaps-se-os-house-mark.svg",
+    "examples/cowork-session.html",
+    "examples/dynamics-readonly.html",
     "index.html",
     "README.md",
     "robots.txt",
@@ -52,14 +54,22 @@
     "handover.html",
     "local-preview-notes.html",
     "resources/screenshots/README.md",
-    "resources/screenshots/quote-review-context.png",
-    "resources/screenshots/sample-analysis-history.png",
-    "resources/screenshots/sample-quantity-review.png",
-    "resources/screenshots/scoring-table-excerpt.png"
+    "resources/screenshots/cowork-session-full.png",
+    "resources/screenshots/cowork-session-full-mobile.png",
+    "resources/screenshots/dynamics-readonly-full.png",
+    "resources/screenshots/dynamics-readonly-full-mobile.png"
   ],
   "externalLinks": [
+    "https://learn.microsoft.com/en-us/microsoft-365/copilot/cowork/use-cowork",
     "https://learn.microsoft.com/power-apps/developer/model-driven-apps/webpage-html-web-resources"
   ],
+  "workflow": {
+    "workingSurface": "Microsoft 365 Copilot Cowork",
+    "finalSurface": "Dynamics 365 read-only presentation",
+    "nativeCoworkVerified": false,
+    "dynamicsIntegrationVerified": false,
+    "sampleOnly": true
+  },
   "gate": {
     "type": "password",
     "mechanism": "gate.js",
@@ -82,11 +92,37 @@
   },
   "visualAssets": {
     "screenshotsCaptured": true,
-    "screenshotType": "approved-sample-synthetic-reviewed-capture-subviews",
+    "screenshotType": "newly-rendered-complete-illustrative-ui-examples",
     "placeholderAssetsInUse": false,
     "placeholderReplacementRequiredBeforePublication": false,
     "publicationVerified": false,
     "connectedFlowVerified": false,
-    "note": "Images are valid named subviews from a reviewed capture, not proof of a currently connected flow or a full-height view of the application."
+    "displayMode": "complete-full-page-natural-aspect-ratio",
+    "examples": [
+      {
+        "surface": "Cowork working session",
+        "html": "examples/cowork-session.html",
+        "desktopCapture": "resources/screenshots/cowork-session-full.png",
+        "mobileCapture": "resources/screenshots/cowork-session-full-mobile.png",
+        "illustrativePrototype": true
+      },
+      {
+        "surface": "Dynamics read-only result",
+        "html": "examples/dynamics-readonly.html",
+        "desktopCapture": "resources/screenshots/dynamics-readonly-full.png",
+        "mobileCapture": "resources/screenshots/dynamics-readonly-full-mobile.png",
+        "illustrativePrototype": true
+      }
+    ],
+    "note": "These are complete newly rendered illustrative UIs using public documents and synthetic data. They are not proof of a live Cowork session, customer tenant, connected Dynamics flow, publication, or customer acceptance."
+  },
+  "artifactHashes": {
+    "index.html": "25d6d1418aa7e9f0acebc681cb0be4a6472fc0008d40df1c75652ff8e323e069",
+    "examples/cowork-session.html": "137f0ec59f0c7e1b23b3faf2a9abbe912a1c50e3e161f081aecc59a09fba3475",
+    "examples/dynamics-readonly.html": "f78cae63abe02747c44fbd50189d0208abb43e78882fa60ff72290c4586f017b",
+    "resources/screenshots/cowork-session-full.png": "030ac2ac4d2ab99c92ac2f5b28471589cc4ee1e97ccda248628244c23157bbe8",
+    "resources/screenshots/cowork-session-full-mobile.png": "393e4c03e2ec341f5a00e5c1ff02dcfcbd8c7f26d98a0b8e978532ed0c4071f3",
+    "resources/screenshots/dynamics-readonly-full.png": "a8a5e982e872a54ef1f745a3eac01bff9b2ae7595ca02c827d6ee1456e818793",
+    "resources/screenshots/dynamics-readonly-full-mobile.png": "171d3b60ffb6ae64967472595f6ef8af3ce1f3ef093873e1c7dcc607b852e5e7"
   }
 }

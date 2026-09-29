@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Illustrative Dynamics read-only result — Site Quantity Analysis</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    html[data-theme="light"] {
+      --cp-bg: #f3f5f8;
+      --cp-bg-elevated: #f8fafc;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #eaf3ff;
+      --cp-border: #c7d4e5;
+      --cp-border-strong: #6f89a9;
+      --cp-text: #142d4e;
+      --cp-text-muted: #415873;
+      --cp-text-soft: #526983;
+      --cp-accent: #0057b8;
+      --cp-accent-hover: #003b7a;
+      --cp-accent-soft: rgba(0, 87, 184, 0.10);
+      --cp-accent-fg: #ffffff;
+      --cp-link: #0057b8;
+      --cp-success: #127045;
+      --cp-warning: #7a5200;
+      --cp-danger: #9f2a2a;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--cp-bg); color: var(--cp-text); }
+    body { font: 14px/1.45 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; }
+    a { color: var(--cp-link); text-underline-offset: 3px; }
+    a:focus-visible { outline: 3px solid var(--cp-link); outline-offset: 3px; }
+    h1, h2, h3, p { margin-top: 0; }
+    .topbar {
+      display: flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 8px 18px;
+      background: var(--cp-text);
+      color: var(--cp-surface);
+    }
+    .product { display: flex; align-items: center; gap: 12px; }
+    .waffle { font-size: 20px; letter-spacing: 2px; }
+    .product strong { font-size: 15px; }
+    .prototype-label {
+      padding: 5px 9px;
+      border: 1px solid var(--cp-border);
+      border-radius: 999px;
+      color: var(--cp-surface);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .app-shell { display: grid; grid-template-columns: 220px minmax(0, 1fr); min-height: calc(100vh - 52px); }
+    .side-nav { border-right: 1px solid var(--cp-border); background: var(--cp-bg-elevated); }
+    .app-name { padding: 18px; border-bottom: 1px solid var(--cp-border); font-size: 17px; font-weight: 800; }
+    .nav-group { padding: 14px 10px; }
+    .nav-label { margin: 8px 10px; color: var(--cp-text-muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .nav-item { display: flex; gap: 10px; align-items: center; padding: 9px 10px; border-radius: 6px; color: var(--cp-text); text-decoration: none; }
+    .nav-item[aria-current="page"] { border-left: 3px solid var(--cp-accent); background: var(--cp-accent-soft); color: var(--cp-accent); font-weight: 800; }
+    .main { min-width: 0; }
+    .commandbar { display: flex; min-height: 48px; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 20px; border-bottom: 1px solid var(--cp-border); background: var(--cp-surface); }
+    .command-context { color: var(--cp-text-muted); font-size: 12px; font-weight: 700; }
+    .record { padding: 24px clamp(18px, 4vw, 54px) 40px; }
+    .record-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+    .eyebrow { margin-bottom: 6px; color: var(--cp-text-muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    h1 { margin-bottom: 5px; font-size: clamp(26px, 3vw, 36px); line-height: 1.1; }
+    .record-subtitle { color: var(--cp-text-muted); }
+    .locked {
+      flex: 0 0 auto;
+      padding: 7px 11px;
+      border: 1px solid var(--cp-success);
+      border-radius: 999px;
+      color: var(--cp-success);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .callout {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border: 1px solid var(--cp-border);
+      border-left: 4px solid var(--cp-accent);
+      border-radius: 8px;
+      background: var(--cp-surface-soft);
+    }
+    .tabs { display: flex; gap: 22px; margin-bottom: 20px; border-bottom: 1px solid var(--cp-border); }
+    .tab { padding: 11px 1px 9px; color: var(--cp-text-muted); font-weight: 700; text-decoration: none; }
+    .tab[aria-current="page"] { border-bottom: 3px solid var(--cp-accent); color: var(--cp-accent); }
+    .section {
+      margin-bottom: 18px;
+      padding: 20px;
+      border: 1px solid var(--cp-border);
+      border-radius: 8px;
+      background: var(--cp-surface);
+    }
+    .section-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+    .section h2 { margin: 0; font-size: 18px; }
+    .section-state { color: var(--cp-text-muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .metrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .metric { min-width: 0; padding: 14px; border: 1px solid var(--cp-border); border-radius: 8px; background: var(--cp-bg-elevated); }
+    .metric span { display: block; color: var(--cp-text-muted); font-size: 11px; }
+    .metric strong { display: block; margin-top: 5px; color: var(--cp-accent); font-size: 22px; line-height: 1.1; }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .fact-list { display: grid; grid-template-columns: 1fr auto; gap: 9px 14px; margin: 0; }
+    .fact-list dt { color: var(--cp-text-muted); }
+    .fact-list dd { margin: 0; font-weight: 800; text-align: right; }
+    .source-card { padding: 13px; border: 1px solid var(--cp-border); border-left: 3px solid var(--cp-success); border-radius: 6px; }
+    .source-card + .source-card { margin-top: 9px; }
+    .source-card strong { display: block; }
+    .source-card span { color: var(--cp-text-muted); font-size: 12px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px; border: 1px solid var(--cp-border); text-align: left; vertical-align: top; }
+    th { background: var(--cp-surface-soft); font-size: 12px; }
+    td { font-size: 13px; }
+    .checked { color: var(--cp-success); font-weight: 800; }
+    .limits { margin: 0; padding-left: 20px; }
+    .limits li { margin: 5px 0; }
+    .revision {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border: 2px dashed var(--cp-accent);
+      background: var(--cp-surface-soft);
+    }
+    .revision p { margin-bottom: 0; color: var(--cp-text-muted); }
+    .revision-link { display: inline-flex; min-height: 40px; align-items: center; padding: 8px 13px; border-radius: 7px; background: var(--cp-accent); color: var(--cp-accent-fg); font-weight: 800; text-decoration: none; }
+    @media (max-width: 980px) {
+      .app-shell { grid-template-columns: 70px minmax(0, 1fr); }
+      .app-name { font-size: 0; text-align: center; }
+      .app-name::after { content: "S"; font-size: 18px; }
+      .nav-label, .nav-text { display: none; }
+      .nav-item { justify-content: center; }
+      .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .topbar { align-items: flex-start; padding-inline: 12px; }
+      .prototype-label { max-width: 150px; text-align: center; }
+      .app-shell { display: block; }
+      .side-nav { display: flex; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--cp-border); }
+      .app-name { flex: 0 0 52px; padding: 14px; border-bottom: 0; border-right: 1px solid var(--cp-border); }
+      .nav-group { display: flex; padding: 6px; }
+      .nav-item { width: 42px; }
+      .commandbar { overflow-x: auto; padding-inline: 12px; }
+      .record { padding: 20px 14px 30px; }
+      .record-head { display: block; }
+      .locked { display: inline-flex; margin-top: 10px; }
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .two-col { grid-template-columns: 1fr; }
+      .table-wrap { overflow-x: auto; }
+      table { min-width: 640px; }
+      .revision { display: block; }
+      .revision-link { margin-top: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="product">
+      <span class="waffle" aria-hidden="true">···</span>
+      <strong>Dynamics 365</strong>
+    </div>
+    <span class="prototype-label">Illustrative prototype · not a live tenant</span>
+  </header>
+
+  <div class="app-shell">
+    <nav class="side-nav" aria-label="Dynamics sample navigation">
+      <div class="app-name">Sales Hub</div>
+      <div class="nav-group">
+        <p class="nav-label">My work</p>
+        <a class="nav-item" href="#summary"><span aria-hidden="true">⌂</span><span class="nav-text">Home</span></a>
+        <a class="nav-item" href="#summary"><span aria-hidden="true">▤</span><span class="nav-text">Accounts</span></a>
+        <a class="nav-item" aria-current="page" href="#analysis"><span aria-hidden="true">▣</span><span class="nav-text">Quotes</span></a>
+      </div>
+    </nav>
+
+    <main class="main">
+      <div class="commandbar" aria-label="Read-only command bar">
+        <span class="command-context">Quote result · presentation view</span>
+        <span class="section-state">No editing actions available</span>
+      </div>
+
+      <article class="record">
+        <header class="record-head">
+          <div>
+            <p class="eyebrow">Quote · SYN-2026-001</p>
+            <h1>Site Quantity Analysis</h1>
+            <p class="record-subtitle">Demo project · synthetic geometry · public-source evidence</p>
+          </div>
+          <span class="locked">Synthetic demo · locked · read only</span>
+        </header>
+
+        <div class="callout">
+          <strong>Example only.</strong> This complete screen illustrates the intended Dynamics destination after review. It is not a live tenant capture, customer-approved quantity, connected integration, bid, or engineering certification.
+        </div>
+
+        <nav class="tabs" aria-label="Record sections">
+          <a class="tab" href="#summary">Summary</a>
+          <a class="tab" aria-current="page" href="#analysis">Site quantity analysis</a>
+          <a class="tab" href="#history">Review history</a>
+        </nav>
+
+        <section class="section" id="analysis" aria-labelledby="result-title">
+          <div class="section-head">
+            <h2 id="result-title">Final reviewed result</h2>
+            <span class="section-state">Read-only presentation</span>
+          </div>
+          <div class="metrics">
+            <div class="metric"><span>Net protected area</span><strong>600 sq ft</strong></div>
+            <div class="metric"><span>Overlap material</span><strong>90 sq ft</strong></div>
+            <div class="metric"><span>Installed material</span><strong>690 sq ft</strong></div>
+            <div class="metric"><span>Full-width cuts</span><strong>720 sq ft</strong></div>
+            <div class="metric"><span>Trim offcut</span><strong>30 sq ft</strong></div>
+          </div>
+        </section>
+
+        <div class="two-col" id="summary">
+          <section class="section" aria-labelledby="input-title">
+            <div class="section-head">
+              <h2 id="input-title">Synthetic inputs</h2>
+              <span class="section-state">Human-confirmed demo fixture</span>
+            </div>
+            <dl class="fact-list">
+              <dt>Geometry</dt><dd>Flat rectangle</dd>
+              <dt>Length</dt><dd>30 ft</dd>
+              <dt>Width</dt><dd>20 ft</dd>
+              <dt>Stock strip width</dt><dd>8 ft</dd>
+              <dt>Strip count</dt><dd>3</dd>
+              <dt>Selected overlap</dt><dd>18 in</dd>
+            </dl>
+          </section>
+
+          <section class="section" aria-labelledby="source-title">
+            <div class="section-head">
+              <h2 id="source-title">Source facts</h2>
+              <span class="section-state">Public documents</span>
+            </div>
+            <div class="source-card">
+              <strong>NRCS Construction Specification 495</strong>
+              <span>p.3, section 5, Method 2 · 18-inch unsewn overlap minimum unless otherwise specified</span>
+            </div>
+            <div class="source-card">
+              <strong>UFGS 31 05 19.13</strong>
+              <span>pp.7-8 · laps, seams, and extra length are distinct from protected payment area</span>
+            </div>
+          </section>
+        </div>
+
+        <section class="section" aria-labelledby="evidence-title">
+          <div class="section-head">
+            <h2 id="evidence-title">Checked evidence</h2>
+            <span class="section-state">Review summary</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Evidence</th><th>Source</th><th>Claim used</th><th>Review</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>nrcs-495-p3-method2</td><td>NRCS 495 p.3</td><td>18-inch unsewn overlap minimum unless otherwise specified</td><td class="checked">Checked</td></tr>
+                <tr><td>synthetic-geometry-v1</td><td>Demo fixture</td><td>30 ft × 20 ft rectangle with 8 ft full-length strips</td><td class="checked">Checked</td></tr>
+                <tr><td>deterministic-calculation-v1</td><td>Local calculation trace</td><td>600 net + 90 overlap = 690 installed sq ft</td><td class="checked">Checked</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <div class="two-col">
+          <section class="section" aria-labelledby="limits-title">
+            <div class="section-head">
+              <h2 id="limits-title">Assumptions and limits</h2>
+              <span class="section-state">Visible with result</span>
+            </div>
+            <ul class="limits">
+              <li>No project drawing or customer data is used.</li>
+              <li>No slopes, trenches, anchors, slack, damage, or waste allowance is modeled.</li>
+              <li>Full-width cuts are not a stock-roll optimization or complete order.</li>
+              <li>This result is not a bid quantity, engineering approval, or certified takeoff.</li>
+            </ul>
+          </section>
+
+          <section class="section" id="history" aria-labelledby="history-title">
+            <div class="section-head">
+              <h2 id="history-title">Review history</h2>
+              <span class="section-state">Illustrative</span>
+            </div>
+            <dl class="fact-list">
+              <dt>Draft created</dt><dd>Public sample</dd>
+              <dt>Clarification</dt><dd>Quantity distinctions added</dd>
+              <dt>Current state</dt><dd>Demo reviewed</dd>
+              <dt>Customer acceptance</dt><dd>Not claimed</dd>
+            </dl>
+          </section>
+        </div>
+
+        <section class="section revision" aria-labelledby="revision-title">
+          <div>
+            <h2 id="revision-title">Need a correction?</h2>
+            <p>Revisions happen in Cowork. This Dynamics view has no edit, approval, or recalculation capability.</p>
+          </div>
+          <a class="revision-link" href="cowork-session.html">Return to the Cowork example</a>
+        </section>
+        <p><a href="../index.html#walkthrough">Back to the Customer Hub</a></p>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

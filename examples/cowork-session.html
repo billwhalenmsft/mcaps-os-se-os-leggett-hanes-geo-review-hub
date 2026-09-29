@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Illustrative Cowork session — Site Quantity Analysis</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+      --ui-nav: var(--cp-bg-elevated);
+      --ui-blue-soft: var(--cp-accent-soft);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    html[data-theme="light"] {
+      --cp-bg: #eef3f9;
+      --cp-bg-elevated: #f7f9fc;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #eaf3ff;
+      --cp-border: #c7d4e5;
+      --cp-border-strong: #6f89a9;
+      --cp-text: #142d4e;
+      --cp-text-muted: #415873;
+      --cp-text-soft: #526983;
+      --cp-accent: #0057b8;
+      --cp-accent-hover: #003b7a;
+      --cp-accent-soft: rgba(0, 87, 184, 0.10);
+      --cp-accent-fg: #ffffff;
+      --cp-link: #0057b8;
+      --cp-success: #127045;
+      --cp-warning: #7a5200;
+      --cp-danger: #9f2a2a;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--cp-bg); color: var(--cp-text); }
+    body { font: 15px/1.45 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; }
+    a { color: var(--cp-link); text-underline-offset: 3px; }
+    a:focus-visible { outline: 3px solid var(--cp-link); outline-offset: 3px; }
+    button, input { font: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      min-height: 58px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+    }
+    .product { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .app-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .product strong { display: block; font-size: 16px; }
+    .product span { display: block; color: var(--cp-text-muted); font-size: 12px; }
+    .prototype-label {
+      padding: 5px 9px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 999px;
+      color: var(--cp-text-muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .shell { display: grid; grid-template-columns: 220px minmax(0, 1fr); min-height: calc(100vh - 58px); }
+    .sidebar {
+      padding: 18px 14px;
+      border-right: 1px solid var(--cp-border);
+      background: var(--ui-nav);
+    }
+    .new-task {
+      display: flex;
+      width: 100%;
+      min-height: 42px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--cp-accent);
+      border-radius: 10px;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      font-weight: 800;
+    }
+    .nav-label { margin: 22px 8px 8px; color: var(--cp-text-muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .nav-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin: 3px 0;
+      padding: 10px;
+      border-radius: 8px;
+      color: var(--cp-text);
+      text-decoration: none;
+    }
+    .nav-item[aria-current="page"] { background: var(--cp-accent-soft); color: var(--cp-accent); font-weight: 800; }
+    .nav-icon { width: 18px; text-align: center; }
+    .nav-copy { min-width: 0; }
+    .nav-copy small { display: block; color: var(--cp-text-muted); font-size: 11px; font-weight: 500; }
+    .workspace { display: grid; grid-template-columns: minmax(500px, 1fr) minmax(360px, 0.72fr); min-width: 0; }
+    .conversation { min-width: 0; padding: 28px clamp(20px, 4vw, 58px) 36px; }
+    .task-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+    h1 { margin: 0 0 6px; font-size: clamp(26px, 3vw, 36px); line-height: 1.12; }
+    h2, h3, p { margin-top: 0; }
+    .task-subtitle { margin: 0; color: var(--cp-text-muted); }
+    .task-state {
+      flex: 0 0 auto;
+      padding: 6px 10px;
+      border: 1px solid var(--cp-success);
+      border-radius: 999px;
+      color: var(--cp-success);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .notice {
+      margin-bottom: 18px;
+      padding: 12px 14px;
+      border: 1px solid var(--cp-border);
+      border-left: 4px solid var(--cp-accent);
+      border-radius: 8px;
+      background: var(--cp-surface-soft);
+    }
+    .attachments { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .file-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 10px;
+      border: 1px solid var(--cp-border);
+      border-radius: 8px;
+      background: var(--cp-surface);
+      color: var(--cp-text-muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .message { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; margin: 0 0 20px; }
+    .avatar {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .message.user .avatar { background: var(--cp-text); color: var(--cp-surface); }
+    .bubble {
+      min-width: 0;
+      padding: 15px 17px;
+      border: 1px solid var(--cp-border);
+      border-radius: 6px 16px 16px 16px;
+      background: var(--cp-surface);
+    }
+    .message.user .bubble { background: var(--cp-surface-soft); }
+    .bubble p:last-child { margin-bottom: 0; }
+    .steps { display: grid; gap: 8px; margin: 14px 0; padding: 0; list-style: none; }
+    .steps li { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 9px; align-items: center; }
+    .step-check { color: var(--cp-success); font-weight: 900; }
+    .step-time { color: var(--cp-text-muted); font-size: 11px; }
+    .result-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .result-summary div { padding: 12px; border: 1px solid var(--cp-border); border-radius: 8px; background: var(--cp-bg-elevated); }
+    .result-summary strong { display: block; color: var(--cp-accent); font-size: 19px; }
+    .result-summary span { display: block; color: var(--cp-text-muted); font-size: 11px; }
+    .compose {
+      display: flex;
+      gap: 10px;
+      margin-top: 26px;
+      padding: 10px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 14px;
+      background: var(--cp-surface);
+    }
+    .compose input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--cp-text-muted); }
+    .compose button { border: 0; border-radius: 9px; padding: 8px 13px; background: var(--cp-accent); color: var(--cp-accent-fg); font-weight: 800; }
+    .preview {
+      min-width: 0;
+      padding: 22px;
+      border-left: 1px solid var(--cp-border);
+      background: var(--cp-bg-elevated);
+    }
+    .preview-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .preview-head h2 { margin: 0; font-size: 18px; }
+    .preview-head span { color: var(--cp-text-muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .output {
+      overflow: hidden;
+      border: 1px solid var(--cp-border);
+      border-radius: 12px;
+      background: var(--cp-surface);
+      box-shadow: 0 0 2px var(--cp-border);
+    }
+    .output-toolbar { padding: 10px 12px; border-bottom: 1px solid var(--cp-border); background: var(--cp-surface-soft); color: var(--cp-text-muted); font-size: 12px; font-weight: 700; }
+    .output-body { padding: 20px; }
+    .output-eyebrow { color: var(--cp-accent); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .output h3 { margin: 5px 0 12px; font-size: 24px; }
+    .draft-badge { display: inline-flex; margin-bottom: 16px; padding: 5px 9px; border: 1px solid var(--cp-warning); border-radius: 999px; color: var(--cp-warning); font-size: 11px; font-weight: 800; }
+    .output-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .output-metrics div { padding: 12px; border: 1px solid var(--cp-border); border-radius: 8px; }
+    .output-metrics strong { display: block; font-size: 21px; }
+    .output-metrics span { color: var(--cp-text-muted); font-size: 11px; }
+    .output-section { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--cp-border); }
+    .output-section h3 { margin: 0 0 7px; font-size: 14px; }
+    .output-section p, .output-section li { color: var(--cp-text-muted); font-size: 12px; }
+    .output-section ul { margin: 0; padding-left: 18px; }
+    .footer-note { margin-top: 12px; color: var(--cp-text-muted); font-size: 11px; }
+    @media (max-width: 1080px) {
+      .shell { grid-template-columns: 72px minmax(0, 1fr); }
+      .sidebar { padding-inline: 10px; }
+      .new-task { font-size: 0; }
+      .new-task::after { content: "+"; font-size: 22px; }
+      .nav-label, .nav-copy { display: none; }
+      .nav-item { justify-content: center; }
+      .workspace { grid-template-columns: 1fr; }
+      .preview { border-top: 1px solid var(--cp-border); border-left: 0; }
+    }
+    @media (max-width: 620px) {
+      .topbar { align-items: flex-start; padding: 10px 12px; }
+      .prototype-label { max-width: 140px; text-align: center; }
+      .shell { display: block; }
+      .sidebar { display: flex; gap: 6px; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--cp-border); }
+      .new-task { width: 42px; flex: 0 0 42px; }
+      .nav-item { flex: 0 0 42px; margin: 0; }
+      .conversation { padding: 20px 14px 26px; }
+      .task-heading { display: block; }
+      .task-state { display: inline-flex; margin-top: 12px; }
+      .message { grid-template-columns: 28px minmax(0, 1fr); gap: 8px; }
+      .avatar { width: 28px; height: 28px; }
+      .result-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .preview { padding: 18px 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="product">
+      <span class="app-mark" aria-hidden="true">C</span>
+      <span>
+        <strong>Microsoft 365 Copilot</strong>
+        <span>Cowork</span>
+      </span>
+    </div>
+    <span class="prototype-label">Illustrative prototype · not a live tenant</span>
+  </header>
+  <main class="shell">
+    <nav class="sidebar" aria-label="Cowork sample navigation">
+      <button class="new-task" type="button" disabled>New task</button>
+      <p class="nav-label">Recent tasks</p>
+      <a class="nav-item" aria-current="page" href="#task">
+        <span class="nav-icon" aria-hidden="true">▣</span>
+        <span class="nav-copy">Site quantity review<small>Public sample · today</small></span>
+      </a>
+      <a class="nav-item" href="#sources">
+        <span class="nav-icon" aria-hidden="true">▤</span>
+        <span class="nav-copy">Source documents<small>2 public PDFs</small></span>
+      </a>
+      <a class="nav-item" href="#output">
+        <span class="nav-icon" aria-hidden="true">□</span>
+        <span class="nav-copy">Output files<small>HTML + JSON</small></span>
+      </a>
+    </nav>
+
+    <div class="workspace" id="task">
+      <section class="conversation" aria-labelledby="task-title">
+        <div class="task-heading">
+          <div>
+            <h1 id="task-title">Review the geotextile quantity sample</h1>
+            <p class="task-subtitle">Public federal documents · synthetic 30 ft × 20 ft geometry · no customer data</p>
+          </div>
+          <span class="task-state">Draft ready</span>
+        </div>
+
+        <div class="notice">
+          <strong>Example only.</strong> This complete screen illustrates the intended Cowork working experience. It is not a captured customer session or proof of native tenant execution.
+        </div>
+
+        <div class="attachments" id="sources" aria-label="Attached public sample files">
+          <span class="file-chip">PDF · NRCS 495 Geotextile</span>
+          <span class="file-chip">PDF · UFGS 31 05 19.13</span>
+          <span class="file-chip">ZIP · deterministic sample</span>
+        </div>
+
+        <article class="message user">
+          <div class="avatar" aria-hidden="true">BW</div>
+          <div class="bubble">
+            <p>Review the two public specifications, run the supplied calculation for the synthetic 30 ft × 20 ft rectangle, and return a draft result with citations, assumptions, and exceptions. Do not write to Dynamics.</p>
+          </div>
+        </article>
+
+        <article class="message">
+          <div class="avatar" aria-hidden="true">C</div>
+          <div class="bubble">
+            <p><strong>Public sample completed.</strong> I verified the bounded source rules, ran the deterministic calculation, and prepared HTML and JSON outputs for review.</p>
+            <ul class="steps" aria-label="Completed task steps">
+              <li><span class="step-check">✓</span><span>Verified attached file hashes and public-source manifest</span><span class="step-time">Complete</span></li>
+              <li><span class="step-check">✓</span><span>Checked NRCS 495 p.3 Method 2: 18-inch unsewn overlap</span><span class="step-time">Complete</span></li>
+              <li><span class="step-check">✓</span><span>Ran the bounded calculator against synthetic geometry</span><span class="step-time">Complete</span></li>
+              <li><span class="step-check">✓</span><span>Generated draft HTML and JSON review outputs</span><span class="step-time">Complete</span></li>
+            </ul>
+            <div class="result-summary">
+              <div><strong>600 sq ft</strong><span>Net protected area</span></div>
+              <div><strong>90 sq ft</strong><span>Overlap material</span></div>
+              <div><strong>690 sq ft</strong><span>Installed material</span></div>
+              <div><strong>720 sq ft</strong><span>Full-width cuts</span></div>
+              <div><strong>30 sq ft</strong><span>Trim offcut</span></div>
+              <div><strong>3</strong><span>Full-length strips</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="message user">
+          <div class="avatar" aria-hidden="true">BW</div>
+          <div class="bubble">
+            <p>Keep the result in draft and make the distinction between protected area, installed material, and a complete order explicit.</p>
+          </div>
+        </article>
+
+        <article class="message">
+          <div class="avatar" aria-hidden="true">C</div>
+          <div class="bubble">
+            <p>Updated. The output now states that the 600 sq ft protected area is not the same as 690 sq ft of installed material, and neither value is a complete order, bid quantity, or engineering approval.</p>
+          </div>
+        </article>
+
+        <div class="compose" aria-label="Illustrative follow-up input">
+          <input type="text" value="Ask a follow-up or request a corrected rerun…" readonly aria-label="Follow-up request example">
+          <button type="button" disabled>Send</button>
+        </div>
+      </section>
+
+      <aside class="preview" id="output" aria-labelledby="output-title">
+        <div class="preview-head">
+          <h2 id="output-title">Output preview</h2>
+          <span>HTML · draft</span>
+        </div>
+        <article class="output">
+          <div class="output-toolbar">site-quantity-review.html</div>
+          <div class="output-body">
+            <span class="output-eyebrow">Public documents · synthetic geometry</span>
+            <h3>Quantity result</h3>
+            <span class="draft-badge">Draft · unapproved</span>
+            <div class="output-metrics">
+              <div><strong>600 sq ft</strong><span>Net protected area</span></div>
+              <div><strong>690 sq ft</strong><span>Installed material</span></div>
+              <div><strong>90 sq ft</strong><span>Overlap material</span></div>
+              <div><strong>30 sq ft</strong><span>Trim offcut</span></div>
+            </div>
+            <section class="output-section">
+              <h3>Selected rule</h3>
+              <p>NRCS Construction Specification 495, p.3, section 5, Method 2: 18-inch unsewn overlap minimum unless otherwise specified.</p>
+            </section>
+            <section class="output-section">
+              <h3>Explicit assumptions</h3>
+              <ul>
+                <li>30 ft × 20 ft flat rectangle</li>
+                <li>8 ft stock strips; no end joints</li>
+                <li>No pricing, waste allowance, or roll optimization</li>
+              </ul>
+            </section>
+            <section class="output-section">
+              <h3>Next human step</h3>
+              <p>Review the draft in Cowork. Only a separately authorized final result would be eligible for read-only Dynamics presentation.</p>
+            </section>
+          </div>
+        </article>
+        <p class="footer-note">Illustrative local prototype. No tenant access, customer source documents, Dynamics write, or approval action is represented.</p>
+        <p><a href="../index.html#walkthrough">Back to the Customer Hub</a></p>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

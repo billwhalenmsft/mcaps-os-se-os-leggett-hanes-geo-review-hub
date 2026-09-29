@@ -1,27 +1,20 @@
-# Screenshots — approved sample/synthetic subviews
+# Screenshots — complete illustrative UI examples
 
-The four PNG files in this folder are **approved, reviewed capture subviews**
-using sample/synthetic data only. They replace the earlier local placeholder
-SVG illustrations referenced on the candidate hub (`index.html`, "A first
-look at the experience" section).
+The four PNG files in this folder are newly rendered full-page captures of the
+two complete local examples. They use public documents and synthetic data only.
 
-| File | Used for | Notes |
+| File | Example | Viewport |
 |---|---|---|
-| `sample-quantity-review.png` | Step 1. Review quantities | Sample/synthetic quantity rows in the native Quote view. |
-| `scoring-table-excerpt.png` | Step 2. Inspect scoring and evidence | Sample/synthetic scoring **table excerpt**. Only a subset of the eight scoring dimensions is visible in this excerpt. |
-| `sample-analysis-history.png` | Step 3. Open review pane | Sample/synthetic analysis history shown in the review pane, for quantity review context. |
-| `quote-review-context.png` | Supporting context (gallery/contextual subview) | A wider, sample/synthetic view of the quote review screen, shown for orientation only. |
+| `cowork-session-full.png` | Complete Cowork working session | 1440 px desktop |
+| `cowork-session-full-mobile.png` | Complete Cowork working session | 390 px mobile |
+| `dynamics-readonly-full.png` | Complete Dynamics read-only result | 1440 px desktop |
+| `dynamics-readonly-full-mobile.png` | Complete Dynamics read-only result | 390 px mobile |
 
-**What these images are:** valid named subviews from a reviewed capture,
-approved as public-safe derivatives for this package. They use sample/
-synthetic data only — no real customer data, tenant identifiers, or source
-paths appear in these images.
+The images are generated from `examples/cowork-session.html` and
+`examples/dynamics-readonly.html`. They are illustrative prototypes, not
+screenshots of a live Cowork session, customer tenant, or connected Dynamics
+deployment.
 
-**What these images are not:** proof of a currently connected flow, a live
-or connected tenant, or a full-height view of the application. Nothing here
-represents a completed publication or a customer-verified live experience.
-
-On the hub, each image is presented behind an accessible lightbox (keyboard
-operable, closes on `Esc` or the close button, and returns focus to the
-triggering control on close). The lightbox script (`../../lightbox.js`) is
-local-only — no remote requests or third-party dependencies.
+The Hub displays the desktop captures at natural aspect ratio and exposes them
+through the local keyboard-usable lightbox. Direct links open the full responsive
+HTML examples.
