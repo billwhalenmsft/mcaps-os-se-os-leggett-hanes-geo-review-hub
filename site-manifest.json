@@ -78,16 +78,17 @@
     "softGate": true
   },
   "destination": {
-    "state": "local-draft-only",
-    "public": false,
-    "url": null,
-    "repository": null
+    "state": "github-pages-published",
+    "public": true,
+    "url": "https://billwhalenmsft.github.io/mcaps-os-se-os-leggett-hanes-geo-review-hub/",
+    "repository": "https://github.com/billwhalenmsft/mcaps-os-se-os-leggett-hanes-geo-review-hub",
+    "contentCommit": "56d033a"
   },
   "externalEffects": {
-    "uploaded": false,
-    "published": false,
+    "uploaded": true,
+    "published": true,
     "registered": false,
-    "shared": false,
+    "shared": true,
     "messageSent": false
   },
   "visualAssets": {
@@ -95,7 +96,7 @@
     "screenshotType": "newly-rendered-complete-illustrative-ui-examples",
     "placeholderAssetsInUse": false,
     "placeholderReplacementRequiredBeforePublication": false,
-    "publicationVerified": false,
+    "publicationVerified": true,
     "connectedFlowVerified": false,
     "displayMode": "complete-full-page-natural-aspect-ratio",
     "examples": [

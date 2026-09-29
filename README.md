@@ -5,7 +5,7 @@ Customer-facing progress-and-walkthrough hub prepared for Leggett & Platt.
 - Skin: Studio (media-forward), blue/white MCAPS OS | SE OS Atomic overlay
 - Audience: Leggett & Platt technical and innovation reviewers
 - Updated: 2026-09-28
-- Gate: password (hash pending secure local configuration)
+- Gate: configured client-side display gate (not authentication)
 - Expiry: none (`null` — no expiry date has been set; not a placeholder date)
 
 ## Status distinctions shown on the hub
